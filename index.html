@@ -46,6 +46,7 @@
   a:hover{color:var(--clay);}
 
   .wrap{max-width:var(--max-w); margin:0 auto; padding:0 28px;}
+  #work .wrap{max-width:1400px;}
 
   /* subtle graticule background texture */
   .graticule{
@@ -240,6 +241,64 @@
   }
 
   :focus-visible{outline:2px solid var(--clay); outline-offset:2px;}
+
+  /* ---------- IMAGE GRIDS (bike share, LA dashboard) ---------- */
+  .analysis-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:4px 0 16px;
+  }
+  .analysis-grid .submodel img{
+    width:100%; display:block; border:1px solid var(--line);
+  }
+  .analysis-grid .submodel figcaption{
+    font-size:0.76rem; color:var(--ink-soft); margin-top:4px; text-align:center;
+  }
+  .analysis-final{ grid-column:1 / -1; margin-top:4px; }
+  .analysis-final img{ width:100%; display:block; border:1px solid var(--line); }
+  .analysis-final figcaption{
+    font-size:0.8rem; color:var(--ink-soft); margin-top:6px; text-align:center; font-style:italic;
+  }
+
+  /* ---------- LIVE EMBED (scrollytelling map) ---------- */
+  .embed-frame{
+    position:relative; width:100%; border-radius:2px; overflow:hidden; margin:4px 0 8px;
+  }
+  .embed-frame iframe{ width:100%; height:700px; border:none; display:block; }
+  .embed-frame:fullscreen iframe{ height:100vh; }
+  .embed-frame:-webkit-full-screen iframe{ height:100vh; }
+  .embed-maximize-btn{
+    position:absolute; top:12px; right:12px; z-index:10;
+    display:flex; align-items:center; gap:6px;
+    padding:8px 14px; background:rgba(30,42,34,0.82); color:#fff;
+    border:none; border-radius:4px; font-size:0.82rem; font-family:inherit;
+    cursor:pointer; backdrop-filter:blur(4px);
+  }
+  .embed-maximize-btn:hover{ background:rgba(30,42,34,0.95); }
+  .embed-maximize-btn svg{ width:14px; height:14px; }
+  .embed-hint{ font-size:0.8rem; color:var(--ink-soft); margin:0 0 16px; font-style:italic; }
+
+  /* ---------- WIDE CARDS (image-heavy projects) ---------- */
+  .sheet.wide{ grid-column:1 / -1; }
+  .sheet.wide .analysis-grid{ grid-template-columns:1fr 1fr; gap:14px; }
+  .analysis-grid .submodel img,
+  .analysis-final img{ cursor:zoom-in; transition:opacity 0.15s ease; }
+  .analysis-grid .submodel img:hover,
+  .analysis-final img:hover{ opacity:0.88; }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    display:none; position:fixed; inset:0; z-index:100;
+    background:rgba(20,22,18,0.92);
+    align-items:center; justify-content:center; padding:32px;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img{
+    max-width:100%; max-height:100%; box-shadow:0 8px 40px rgba(0,0,0,0.5);
+  }
+  .lightbox-close{
+    position:absolute; top:20px; right:28px;
+    background:none; border:none; color:#fff; font-size:2rem; line-height:1;
+    cursor:pointer; font-family:inherit;
+  }
 </style>
 </head>
 <body>
@@ -270,8 +329,9 @@
       <p class="role reveal d2">Data Visualization &amp; Cartography</p>
       <p class="bio reveal d2">
         University of Oregon graduate in Data Science and Spatial Data Science &amp; Technology.
-        I turn spatial and civic data into maps and dashboards people actually want to read —
-        currently looking for work in data visualization and cartography.
+        I turn spatial and civic data into creative and interesting maps and dashboards 
+        currently looking for work in data visualization and GIS! Can be found trying new restaurants, 
+        knitting, or listening to new music <3
       </p>
       <div class="hero-links reveal d3">
         <a href="https://github.com/isadalisay" target="_blank" rel="noopener">GitHub ↗</a>
@@ -298,7 +358,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Selected Work</h2>
-        <span class="tag">5 projects</span>
+        <span class="tag">7 projects</span>
       </div>
 
       <div class="grid">
@@ -321,19 +381,29 @@
           </div>
         </div>
 
-        <div class="sheet">
+        <div class="sheet wide">
           <span class="tick-bl"></span><span class="tick-br"></span>
           <h3>LA County Grocery Stores vs. Census Data</h3>
           <p>
-            An interactive web map and dashboard comparing grocery store locations across
+            An interactive Plotly Dash dashboard comparing grocery store locations across
             Los Angeles County against city-level census data, built to explore food access
             alongside demographic patterns.
           </p>
-          <div class="tags"><span>Python</span><span>Web Mapping</span><span>Census Data</span></div>
-          <a class="link" href="https://github.com/isadalisay/LA-County-Grocery-Stores-vs.-Census-Data" target="_blank" rel="noopener">View on GitHub ↗</a>
+          <div class="analysis-grid">
+            <figure class="submodel">
+              <img src="images/la-dashboard-overview.jpg" alt="LA grocery dashboard, full county overview">
+              <figcaption>Full county overview</figcaption>
+            </figure>
+            <figure class="submodel">
+              <img src="images/la-dashboard-filtered.jpg" alt="Community deep dive: income distribution vs. grocery price tiers in Beverly Hills">
+              <figcaption>Community deep dive — income vs. price tier, Beverly Hills</figcaption>
+            </figure>
+          </div>
+          <div class="tags"><span>Google Maps</span><span>Plotly Dash</span><span>Census Data</span></div>
+          <a class="link" href="https://github.com/isadalisay/LA-County-Grocery-Stores-vs.-Census-Data" target="_blank" rel="noopener">View code on GitHub ↗</a>
         </div>
 
-        <div class="sheet">
+        <div class="sheet wide">
           <span class="tick-bl"></span><span class="tick-br"></span>
           <h3>Grocery Access, Scrolling Through LA</h3>
           <p>
@@ -341,8 +411,62 @@
             narrative text with animated map transitions to spotlight specific grocery stores
             across Los Angeles.
           </p>
-          <div class="tags"><span>JavaScript</span><span>Scrollytelling</span><span>Web Mapping</span></div>
+          <div class="embed-frame" id="scrolly-frame">
+            <button class="embed-maximize-btn" id="scrolly-maximize" aria-label="View fullscreen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/>
+              </svg>
+              <span>Fullscreen</span>
+            </button>
+            <iframe
+              src="https://isadalisay.github.io/grocery_scrollytelling/flyto-project/flyto-grocery.html"
+              title="Grocery Access, Scrolling Through LA — interactive scrollytelling map"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="embed-hint">Use fullscreen for the intended scroll experience — the map flies as you scroll through each location.</p>
+          <div class="tags"><span>JavaScript</span><span>Mapbox GL</span><span>Scrollytelling</span></div>
           <a class="link" href="https://github.com/isadalisay/WebMapping/tree/main/flyto-project" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+
+        <div class="sheet wide">
+          <span class="tick-bl"></span><span class="tick-br"></span>
+          <h3>Bike Share Site Suitability — Salem, OR</h3>
+          <p>
+            A weighted suitability analysis identifying optimal bike share station
+            locations across Salem, combining population density and road network
+            accessibility submodels into a single site recommendation.
+          </p>
+          <div class="analysis-grid">
+            <figure class="submodel">
+              <img src="images/bikeshare-submodel1.jpg" alt="Bike share submodel 1: low-income density, workplace/store density, and slope layers">
+              <figcaption>Submodel 1 — density and slope layers</figcaption>
+            </figure>
+            <figure class="submodel">
+              <img src="images/bikeshare-submodel2.jpg" alt="Bike share submodel 2: distance from bus stops and bike routes">
+              <figcaption>Submodel 2 — transit and bike route proximity</figcaption>
+            </figure>
+            <figure class="analysis-final">
+              <img src="images/bikeshare-final-suitability.jpg" alt="Final bike share demand heat map, Salem OR, with potential bike share area highlighted">
+              <figcaption>Final demand heat map — potential bike share area</figcaption>
+            </figure>
+          </div>
+          <div class="tags"><span>ArcGIS Pro</span><span>Site Suitability</span><span>Spatial Analysis</span></div>
+        </div>
+
+        <div class="sheet wide">
+          <span class="tick-bl"></span><span class="tick-br"></span>
+          <h3>Hydrology & Hiking Trails in Angeles National Forest</h3>
+          <p>
+            A 3D terrain visualization of the Tujunga Watershed using orthoimagery and
+            hypsometric tinting to highlight elevation, water flow, and hiking routes
+            across the San Gabriel Mountains.
+          </p>
+          <div class="analysis-final">
+            <img src="images/terrain-visualization.jpg" alt="3D terrain map of hydrology and hiking trails in Angeles National Forest">
+          </div>
+          <div class="tags"><span>ArcGIS Pro</span><span>3D Terrain</span><span>Hydrology</span></div>
         </div>
 
         <div class="sheet">
@@ -448,17 +572,17 @@
       </div>
       <div class="about-grid">
         <p>
-          I graduated from the University of Oregon with a background in Data Science and Spatial
+          Filipina graduated from the University of Oregon with a background in Data Science and Spatial
           Data Science &amp; Technology. My coursework and projects combine statistics,
-          geography, and design. I like taking messy datasets and turning them
-          into maps and dashboards that hold up to scrutiny and are genuinely pleasant to look at.
-          I'm currently looking for roles in data visualization and GIS.
+          geography, and design. Working in the library as a consultant has made me adaptable and gain experience as a 
+          problem solver across multiple types of software and questions related to data. At the InfoGraphics Lab I 
+          developed my skills in cartography and data visualization for publication of ungulate migration. 
         </p>
         <ul class="skill-list">
-          <li><span>Cartography &amp; GIS</span><span>ArcGIS Pro, ArcGIS Online, Folium, GeoPandas</span></li>
+          <li><span>GIS</span><span>ArcGIS Pro, ArcGIS Online, Folium, GeoPandas</span></li>
           <li><span>Data Visualization</span><span>Plotly, Dash, Tableau, Power BI</span></li>
           <li><span>Programming</span><span>Python, R, SQL</span></li>
-          <li><span>Design</span><span>Illustrator, InDesign, Photoshop</span></li>
+          <li><span>Design</span><span>Illustrator, InDesign, Photoshop, Canva</span></li>
         </ul>
       </div>
     </div>
@@ -467,7 +591,7 @@
   <footer id="contact">
     <div class="wrap">
       <h2>Get in touch</h2>
-      <p>Open to data visualization and cartography roles — feel free to reach out.</p>
+      <p>Open to data visualization and cartography roles — feel free to reach out!</p>
       <div class="footer-links">
         <a href="mailto:isabeldalisay03@gmail.com">Email</a>
         <a href="https://github.com/isadalisay" target="_blank" rel="noopener">GitHub</a>
@@ -481,6 +605,65 @@
   </footer>
 
 </main>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  (function () {
+    const frame = document.getElementById('scrolly-frame');
+    const btn = document.getElementById('scrolly-maximize');
+    if (!frame || !btn) return;
+
+    function isFullscreen() {
+      return document.fullscreenElement || document.webkitFullscreenElement;
+    }
+    function toggleFullscreen() {
+      if (!isFullscreen()) {
+        if (frame.requestFullscreen) frame.requestFullscreen();
+        else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      }
+    }
+    btn.addEventListener('click', toggleFullscreen);
+
+    function updateLabel() {
+      btn.querySelector('span').textContent = isFullscreen() ? 'Exit fullscreen' : 'Fullscreen';
+    }
+    document.addEventListener('fullscreenchange', updateLabel);
+    document.addEventListener('webkitfullscreenchange', updateLabel);
+  })();
+
+  (function () {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+    if (!lightbox || !lightboxImg || !closeBtn) return;
+
+    document.querySelectorAll('.analysis-grid img, .analysis-final img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('open');
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightboxImg.src = '';
+    }
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+</script>
 
 </body>
 </html>
