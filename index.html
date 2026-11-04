@@ -217,9 +217,13 @@
   .exp-role li:last-child{margin-bottom:0;}
 
   /* ---------- ABOUT ---------- */
-  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:48px;}
+  .about-grid{display:grid; grid-template-columns:1fr; gap:36px;}
   @media (max-width:700px){ .about-grid{grid-template-columns:1fr; gap:28px;} }
-  .about-grid p{color:var(--ink-soft); max-width:56ch;}
+  .about-intro{display:flex; gap:32px; align-items:flex-start;}
+.about-photo{margin:0; flex:0 0 280px; border:1px solid var(--ink-soft); padding:0; background:none;}
+.about-photo img{display:block; width:100%; aspect-ratio:4/5; object-fit:cover;}
+@media (max-width:640px){.about-intro{flex-direction:column;} .about-photo{flex-basis:auto; width:100%; max-width:320px;}}
+.about-grid p{color:var(--ink-soft); max-width:none;}
   .skill-list{list-style:none; margin:0; padding:0;}
   .skill-list li{
     display:flex; justify-content:space-between; padding:9px 0;
@@ -358,7 +362,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Selected Work</h2>
-        <span class="tag">7 projects</span>
+        <span class="tag">8 projects</span>
       </div>
 
       <div class="grid">
@@ -366,12 +370,19 @@
         <div class="sheet feature">
           <span class="tick-bl"></span><span class="tick-br"></span>
           <div class="feature-text">
-            <div class="kicker">Featured — Cartography</div>
+            <div class="kicker">Featured — Award-Winning Cartography</div>
             <h3>From the Air to the Sea</h3>
             <p>
               A cartographic portrait of how the Philippines moves, passenger traffic through its
               major air and sea transit hubs across Luzon, Visayas, and Mindanao, built from Illustrator,
               ArcGIS Pro, and Philippine government transit data.
+            </p>
+            <p>
+              <strong>A Winner of the Bill Loy Award.</strong> I made this map because of my background as a Filipina. 
+              I was born and raised in the US but I would hear from my parents how they would take 
+              boats to get to school and in an archipelago of more than
+              7,000 islands, planes and ferries are how people stay connected.  I wanted to
+              show that movement in a way anyone could read at a glance.
             </p>
             <div class="tags"><span>ArcGIS</span><span>Cartographic Design</span></div>
             <a class="link" href="BillLoy_Award_Dalisay.pdf" target="_blank" rel="noopener">View full-resolution map ↗</a>
@@ -383,33 +394,12 @@
 
         <div class="sheet wide">
           <span class="tick-bl"></span><span class="tick-br"></span>
-          <h3>LA County Grocery Stores vs. Census Data</h3>
-          <p>
-            An interactive Plotly Dash dashboard comparing grocery store locations across
-            Los Angeles County against city-level census data, built to explore food access
-            alongside demographic patterns.
-          </p>
-          <div class="analysis-grid">
-            <figure class="submodel">
-              <img src="images/la-dashboard-overview.jpg" alt="LA grocery dashboard, full county overview">
-              <figcaption>Full county overview</figcaption>
-            </figure>
-            <figure class="submodel">
-              <img src="images/la-dashboard-filtered.jpg" alt="Community deep dive: income distribution vs. grocery price tiers in Beverly Hills">
-              <figcaption>Community deep dive — income vs. price tier, Beverly Hills</figcaption>
-            </figure>
-          </div>
-          <div class="tags"><span>Google Maps</span><span>Plotly Dash</span><span>Census Data</span></div>
-          <a class="link" href="https://github.com/isadalisay/LA-County-Grocery-Stores-vs.-Census-Data" target="_blank" rel="noopener">View code on GitHub ↗</a>
-        </div>
-
-        <div class="sheet wide">
-          <span class="tick-bl"></span><span class="tick-br"></span>
-          <h3>Grocery Access, Scrolling Through LA</h3>
+          <h3>Luxury at the Cost of Living</h3>
           <p>
             A scroll-driven story map that flies the reader between neighborhoods, pairing
             narrative text with animated map transitions to spotlight specific grocery stores
-            across Los Angeles.
+            across Los Angeles. Growing up in Los Angeles I saw first hand how trends shape 
+            and I saw that the grocery stores that are present in an area reflects the community they serve.
           </p>
           <div class="embed-frame" id="scrolly-frame">
             <button class="embed-maximize-btn" id="scrolly-maximize" aria-label="View fullscreen">
@@ -432,11 +422,31 @@
 
         <div class="sheet wide">
           <span class="tick-bl"></span><span class="tick-br"></span>
+          <h3>Hydrology & Hiking Trails in Angeles National Forest</h3>
+          <p>
+             A 3D terrain visualization of the Tujunga Watershed using orthoimagery and
+            hypsometric tinting to highlight elevation, water flow, and hiking routes
+            across the San Gabriel Mountains. This was the first time I created a 3D visualization and I was inspired by the maps
+            I would see at national parks which I tried to emulate with the labeling of hiking trails and topography. 
+            Learning about the mountains that were right in my backyard helped me understand the importance of these mountains
+            as hubs for biodiversity, providing crucial water resources, and sources for wildfires.
+          </p>
+          <div class="analysis-final">
+            <img src="images/terrain-visualization.jpg" alt="3D terrain map of hydrology and hiking trails in Angeles National Forest">
+          </div>
+          <div class="tags"><span>ArcGIS Pro</span><span>3D Terrain</span><span>Hydrology</span></div>
+        </div>
+
+        <div class="sheet wide">
+          <span class="tick-bl"></span><span class="tick-br"></span>
           <h3>Bike Share Site Suitability — Salem, OR</h3>
           <p>
             A weighted suitability analysis identifying optimal bike share station
             locations across Salem, combining population density and road network
-            accessibility submodels into a single site recommendation.
+            accessibility submodels into a single site recommendation. These maps were my introduction to model building in ArcGIS Pro and using urban data. 
+            I was asked a broad question of "Where should bikeshare racks be placed in a city?". I got to use my Python experience with the model builder, 
+            but the urban data I used such as building location, typography, and existing public transportation helped introduce me to spaitial analysis 
+            and location allocation analysis in an urban setting.
           </p>
           <div class="analysis-grid">
             <figure class="submodel">
@@ -457,16 +467,72 @@
 
         <div class="sheet wide">
           <span class="tick-bl"></span><span class="tick-br"></span>
-          <h3>Hydrology & Hiking Trails in Angeles National Forest</h3>
+          <h3>LA Grocery Stores</h3>
           <p>
-            A 3D terrain visualization of the Tujunga Watershed using orthoimagery and
-            hypsometric tinting to highlight elevation, water flow, and hiking routes
-            across the San Gabriel Mountains.
+            An interactive Plotly Dash dashboard comparing grocery store locations across
+            Los Angeles County against city-level census data, built to explore food access
+            alongside demographic patterns. Before I made the scrolly-telling map above I created this 
+            dashboard to compare grocery store locations with Census data in Los Angeles.
+            I wanted to see if the placements of these grocery stores are purposeful and whether certain 
+            communities are underserved despite the number of grocery stores in Los Angeles.
           </p>
-          <div class="analysis-final">
-            <img src="images/terrain-visualization.jpg" alt="3D terrain map of hydrology and hiking trails in Angeles National Forest">
+          <div class="analysis-grid">
+            <figure class="submodel">
+              <img src="images/la-dashboard-overview.jpg" alt="LA grocery dashboard, full county overview">
+              <figcaption>Full county overview</figcaption>
+            </figure>
+            <figure class="submodel">
+              <img src="images/la-dashboard-filtered.jpg" alt="Community deep dive: income distribution vs. grocery price tiers in Beverly Hills">
+              <figcaption>Community deep dive — income vs. price tier, Beverly Hills</figcaption>
+            </figure>
           </div>
-          <div class="tags"><span>ArcGIS Pro</span><span>3D Terrain</span><span>Hydrology</span></div>
+          <div class="tags"><span>Google Maps</span><span>Plotly Dash</span><span>Census Data</span></div>
+          <a class="link" href="https://github.com/isadalisay/LA-County-Grocery-Stores-vs.-Census-Data" target="_blank" rel="noopener">View code on GitHub ↗</a>
+        </div>
+
+        <div class="sheet wide">
+          <span class="tick-bl"></span><span class="tick-br"></span>
+          <div class="status-note">Draft maps — not the final published versions</div>
+          <h3>Atlas of Wyoming — Draft Maps</h3>
+          <p>
+            Draft maps I produced at the InfoGraphics Lab for the Atlas of Wyoming, visualizing elk and
+            pronghorn migration around Cody and the Absaroka Front: migration corridors and stopovers, an
+            individual animal's seasonal route and elevation profile, disease transmission, fence
+            modifications, and where the two herds' ranges overlap. Working at the lab gave me the chance to work with government data
+            and wildlife migration data. I also learned the importance of understanding one's audience as the atlas will eventually be published. 
+            Each is watermarked as a draft.
+          </p>
+          <div class="analysis-grid">
+            <figure class="analysis-final">
+              <img src="images/wyoming-pronghorn-corridors.jpg" alt="Draft map of Carter Mountain pronghorn migration corridors and threats">
+              <figcaption>Pronghorn migration corridors and threats (draft)</figcaption>
+            </figure>
+            <figure class="submodel">
+              <img src="images/wyoming-elk-corridors.jpg" alt="Draft map of Cody elk migration corridors with stopovers">
+              <figcaption>Elk migration corridors and stopovers (draft)</figcaption>
+            </figure>
+            <figure class="submodel">
+              <img src="images/wyoming-elk-migration-detail.jpg" alt="Draft migration detail map and elevation profile for Elk 83457">
+              <figcaption>Migration detail with elevation profile, Elk 83457 (draft)</figcaption>
+            </figure>
+            <figure class="submodel">
+              <img src="images/wyoming-disease-transmission.jpg" alt="Draft map of elk disease transmission and habitat challenges">
+              <figcaption>Disease transmission and habitat challenges (draft)</figcaption>
+            </figure>
+            <figure class="submodel">
+              <img src="images/wyoming-pronghorn-fencing.jpg" alt="Draft map of Carter Mountain pronghorn fencing modifications">
+              <figcaption>Carter Mountain fencing modifications (draft)</figcaption>
+            </figure>
+            <figure class="submodel">
+              <img src="images/wyoming-cody-elk-pronghorn-range.jpg" alt="Draft map of Cody elk and Carter Mountain pronghorn ranges">
+              <figcaption>Cody elk and Carter Mountain pronghorn ranges (draft)</figcaption>
+            </figure>
+            <figure class="submodel">
+              <img src="images/wyoming-absaroka-front-tracks.jpg" alt="Draft map of elk and pronghorn GPS tracks across the Absaroka Front">
+              <figcaption>Animal tracks across the Absaroka Front (draft)</figcaption>
+            </figure>
+          </div>
+          <div class="tags"><span>ArcGIS Pro</span><span>Adobe Illustrator</span><span>Photoshop</span><span>InDesign</span><span>USGS Reference Maps</span></div>
         </div>
 
         <div class="sheet">
@@ -491,7 +557,6 @@
           <div class="tags"><span>Python</span><span>Geodatabase</span><span>ArcGIS</span></div>
           <a class="link" href="https://github.com/isadalisay/ConvertingLegacyGISData" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
-
       </div>
     </div>
   </section>
@@ -525,8 +590,11 @@
           <div class="exp-role">
             <h3>Student Cartographer</h3>
             <ul>
-              <li>Produced publication-quality maps for campus-wide distribution and printed atlases.</li>
-              <li>Designed cartographic layouts and data visualizations in collaboration with the U.S. Geological Survey.</li>
+               <li>Produced publication-quality maps for campus-wide distribution and printed atlases.</li>
+              <li>Worked in a collaborative team with students and faculty on several map-driven reports.</li>
+              <li>Drafted maps for the Atlas of Wyoming Ungulate Migrations and Ungulate Migrations of the Western United States 
+                using ArcGIS Pro, Adobe Illustrator, Photoshop, and InDesign, with USGS maps as reference.</li>
+              <li>Designed cartographic layouts and data visualizations in collaboration with University of Wyoming.</li>
               <li>Analyzed and visualized ungulate migration patterns to illustrate movement and human–environment interactions.</li>
             </ul>
           </div>
@@ -571,13 +639,15 @@
         <span class="tag">Background</span>
       </div>
       <div class="about-grid">
+        <div class="about-intro">
+          <figure class="about-photo">
+            <img src="images/profile.jpg" alt="Portrait of Isabel Dalisay" onerror="this.closest('.about-photo').style.display='none'">
+          </figure>
         <p>
           Filipina graduated from the University of Oregon with a background in Data Science and Spatial
-          Data Science &amp; Technology. My coursework and projects combine statistics,
-          geography, and design. Working in the library as a consultant has made me adaptable and gain experience as a 
-          problem solver across multiple types of software and questions related to data. At the InfoGraphics Lab I 
-          developed my skills in cartography and data visualization for publication of ungulate migration. 
+          Data Science &amp; Technology. I apply statistics, geography, and design to tackle critical social and environmental challenges I am passionate about, from food security to migration patterns.
         </p>
+        </div>
         <ul class="skill-list">
           <li><span>GIS</span><span>ArcGIS Pro, ArcGIS Online, Folium, GeoPandas</span></li>
           <li><span>Data Visualization</span><span>Plotly, Dash, Tableau, Power BI</span></li>
