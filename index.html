@@ -159,7 +159,9 @@
   .sheet p{color:var(--ink-soft); font-size:0.95rem; margin:0 0 16px;}
   .tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;}
   .tags span{
-    font-size:0.76rem; color:var(--moss); border:1px solid var(--moss);
+    font-size:0.76rem; color:color-mix(in srgb, var(--moss) 55%, #000);
+    border:1px solid var(--moss);
+    background:color-mix(in srgb, var(--moss) 50%, transparent);
     padding:2px 8px; border-radius:20px;
   }
   .sheet .link{font-size:0.9rem; font-weight:600; text-decoration:none;}
@@ -332,6 +334,7 @@
       <h1 class="reveal d1">Isabel Dalisay</h1>
       <p class="role reveal d2">Data Visualization &amp; Cartography</p>
       <p class="bio reveal d2">
+      <p>
         University of Oregon graduate in Data Science and Spatial Data Science &amp; Technology.
         I turn spatial and civic data into creative and interesting maps and dashboards 
         currently looking for work in data visualization and GIS! Can be found trying new restaurants, 
@@ -384,7 +387,7 @@
               7,000 islands, planes and ferries are how people stay connected.  I wanted to
               show that movement in a way anyone could read at a glance.
             </p>
-            <div class="tags"><span>ArcGIS</span><span>Cartographic Design</span></div>
+            <div class="tags"><span>ArcGIS Pro</span><span>Adobe Illustrator</span><span>Cartography</span></div>
             <a class="link" href="BillLoy_Award_Dalisay.pdf" target="_blank" rel="noopener">View full-resolution map ↗</a>
           </div>
           <div class="feature-img">
@@ -416,7 +419,7 @@
             </iframe>
           </div>
           <p class="embed-hint">Use fullscreen for the intended scroll experience — the map flies as you scroll through each location.</p>
-          <div class="tags"><span>JavaScript</span><span>Mapbox GL</span><span>Scrollytelling</span></div>
+          <div class="tags"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Mapbox GL</span><span>Scrollytelling</span></div>
           <a class="link" href="https://github.com/isadalisay/WebMapping/tree/main/flyto-project" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
 
@@ -469,7 +472,7 @@
           <span class="tick-bl"></span><span class="tick-br"></span>
           <h3>LA Grocery Stores</h3>
           <p>
-            An interactive Plotly Dash dashboard comparing grocery store locations across
+            An interactive dashboard comparing grocery store locations across
             Los Angeles County against city-level census data, built to explore food access
             alongside demographic patterns. Before I made the scrolly-telling map above I created this 
             dashboard to compare grocery store locations with Census data in Los Angeles.
@@ -486,7 +489,7 @@
               <figcaption>Community deep dive — income vs. price tier, Beverly Hills</figcaption>
             </figure>
           </div>
-          <div class="tags"><span>Google Maps</span><span>Plotly Dash</span><span>Census Data</span></div>
+          <div class="tags"><span>Google Maps API</span><span>Python</span><span>Geopandas</span><span>Folium</span><span>Plotly</span><span>Dash</span><span>LA Census Hub</span></div>
           <a class="link" href="https://github.com/isadalisay/LA-County-Grocery-Stores-vs.-Census-Data" target="_blank" rel="noopener">View code on GitHub ↗</a>
         </div>
 
@@ -554,7 +557,7 @@
             A GIS coding-class project building a workflow to migrate legacy spatial data formats
             into modern geodatabase structures.
           </p>
-          <div class="tags"><span>Python</span><span>Geodatabase</span><span>ArcGIS</span></div>
+          <div class="tags"><span>ArcPy</span><span>Geodatabase</span><span>ArcGIS Pro</span></div>
           <a class="link" href="https://github.com/isadalisay/ConvertingLegacyGISData" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
       </div>
